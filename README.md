@@ -6,7 +6,7 @@ This Python script automates the process of booking tickets on a website using t
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Important](#importantnotes)
+- [Notes](#notes)
 
 ## Prerequisites
 Before running the script, make sure you have the following installed:
@@ -41,6 +41,6 @@ Before running the script, make sure you have the following installed:
 - Acceptance of terms and conditions
 3. After running the script, it will proceed to the payment page. You can manually complete the payment process.
 
-## Important Notes
+## Notes
 - This script is provided for educational purposes only. Please use it responsibly and in compliance with the terms of use of the website you are automating.
 - Website structures and elements may change over time, so the script may require updates to work with the latest version of the website.
