@@ -34,11 +34,11 @@ Before running the script, make sure you have the following installed:
    ```shell
    python formbot.py
 2. The script will automate the following steps:
-- Language selection
-- Date selection (3 days from the current date)
-- Selection of ticket quantity (you can change the persons to the number you like. First person calculated already)
-- Form filling with personal information
-- Acceptance of terms and conditions
+   - Language selection
+   - Date selection (3 days from the current date)
+   - Selection of ticket quantity (you can change the persons to the number you like. First person calculated already)
+   - Form filling with personal information
+   - Acceptance of terms and conditions
 3. After running the script, it will proceed to the payment page. You can manually complete the payment process.
 
 ## Important Notes
