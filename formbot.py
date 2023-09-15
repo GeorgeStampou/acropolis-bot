@@ -15,6 +15,8 @@ def clickbutton(id):
 def clickcheckbox(path):
     driver.find_element(By.XPATH, path).click()
 
+#function to wait some time until spesific HTML element appears on web page. the element is located by XPATH
+# and finally scrolls down the window so we can interact with elements that doesn't show.      
 def wait(time, path):
     try:
         WebDriverWait(driver, time).until(EC.presence_of_element_located([By.XPATH, path]))
@@ -24,10 +26,11 @@ def wait(time, path):
 def intro():
     lang = driver.find_element(By.CLASS_NAME, 'intro_gr')
     lang.click()
-    print("clicked")
-
+    
+    #print("clicked")
     clickbutton('toStep3')
-    print("next clicked")
+    #print("next clicked")
+    
 
 def datemodification():
     today = date.today()
@@ -38,8 +41,8 @@ def datemodification():
     print(datemodified)
     return datemodified
 
+#gets all the available dates and selects to buy tickets 3 days after the current date.
 def selectdatetime(modified_date):
-    #pairnei oles tis meres poy einai diathesimes na epilextoyn kai dialegei thn modified h opoia einai 3 meres meta th shmerinh
     alldates = driver.find_elements(By.XPATH, "//div[@class='pignose-calendar-body']//div[contains(@class,'pignose-calendar-unit-date') and not(contains(@class,'pignose-calendar-unit-disabled'))]")
     for date in alldates:
         if date.get_attribute("data-date") == modified_date:
@@ -54,21 +57,21 @@ def selectdatetime(modified_date):
     clickbutton('toStep4')
     print("next clicked")
 
-def addpersons():
+#function to add more persons
+def addpersons(numberofpersons):
     #time.sleep(1)
     ticketsplus = WebDriverWait(driver,20).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='step_4']/div[3]/div[2]")))
-    ticketsplus.click()
-    print("one more person added")
+    for i in range(numberofpersons):
+        ticketsplus.click()
+        print(f"{i+1} more person added")
 
     driver.execute_script("window.scrollTo(0,400)")
-
     driver.find_element(By.XPATH, "//*[@id='chooseLanguageSelect']/option[38]").click()
-    print("language clicked")
-
+    #print("language clicked")
     clickbutton('toStep5')
-    print("next clicked")
+    #print("next clicked")
     
-
+#function to fill the form with personal information
 def fill_out_form():
     fields = {  'OrderFirstname' : 'GGGGG',
             'OrderLastName'  : 'SSSSSS',
@@ -90,7 +93,7 @@ def fill_out_form():
         else:
             element.send_keys(value)
 
-
+#function to accept the terms, last step
 def accept_terms():
     driver.execute_script("window.scrollTo(0,400)")
 
@@ -112,8 +115,8 @@ if __name__ == '__main__':
     wait(20, '//*[@id="step_3"]/div[3]/div[2]/div[1]')
     selectdatetime(modified_date)
     #time.sleep(1)
-
-    addpersons()
+    persons = 2
+    addpersons(persons)
 
     wait(20, "//*[@id='orderFrm']")
 
